@@ -1,0 +1,49 @@
+.error {
+    color: red;
+
+    font: {
+        size: 2rem;
+        weight: bold;
+    }
+}
+
+.seriousError {
+    @extend .error;
+
+    font: {
+        size: 4rem;
+    }
+}
+
+$wxaWidth:16rem;
+
+@mixin testClass {
+    font: {
+        color: green;
+        size: 2rem;
+        weight: bold;
+    }
+
+    width: $wxaWidth;
+    text-align: center;
+}
+
+.mixin96 {
+    @include testClass()
+}
+
+@for $i from 0 through 4 {
+    .hobby-ul {
+        .item-#{$i} {
+            font-size: ($i+1) * 0.5rem;
+        }
+    }
+}
+
+@each $var in red,
+green,
+blue {
+    .color-#{$var} {
+        background-color: #{$var};
+    }
+}
