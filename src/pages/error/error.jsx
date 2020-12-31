@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Input, Button } from "antd";
 import { saveUserInfo } from "../../store/action";
 import "./error.scss";
-import API from "../../api/api";
 
 class media extends Component {
     constructor(props) {
@@ -24,8 +23,7 @@ class media extends Component {
             { text: '运动', value: 'blue' },
         ]
     };
-    async componentDidMount() {
-        await API.getCaptchaCode();
+    componentDidMount() {
         this.setState({ name: this.props.userInfo.name });
         this.setState({ age: this.props.userInfo.age });
     }
@@ -54,9 +52,7 @@ class media extends Component {
                 />
                 <Button onClick={this.submit}>更改</Button>
 
-                <div className="error">error</div>
-                <div className="seriousError">seriousError</div>
-                <div className="mixin96">我叫汪轩昂</div>
+                <div className="mixin96">这里刚好有八个字</div>
 
                 <ul className="hobby-ul">
                     {this.state.hobby.map((obj, i) => {

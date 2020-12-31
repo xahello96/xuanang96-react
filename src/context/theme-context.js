@@ -14,7 +14,7 @@ export const themes = {
 
 export const ThemeContext = React.createContext({
     theme: themes.dark, // 默认值
-    toggleTheme: () => {
-        console.log('toggleTheme')
+    toggleTheme: () => { 
+        console.log('nmsl')
     },
 });

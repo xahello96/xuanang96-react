@@ -41,8 +41,9 @@ class media extends Component {
                                 {({ user, signin, signout }) => {
                                     return (<div>
                                         <h2>{user}</h2>
-                                        <button onClick={() => { signin(() => { }) }}>登陆</button>
-                                        <button onClick={signout.bind(this, () => { })}>取消登陆</button>
+                                        <hr />
+                                        <button onClick={() => { signin(() => { console.log('登陆cb') }) }}>登陆</button>
+                                        <button onClick={signout.bind(this, () => { console.log('退出登录cb') })}>取消登陆</button>
                                     </div>)
                                 }}
                             </AuthContext.Consumer>

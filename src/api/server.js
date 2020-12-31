@@ -19,14 +19,11 @@ class Server extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            needLoadingRequestCount: 0,
             loading: false
         }
     }
-    componentDidMount() {
-        console.log(1)
-    }
-    aaa(name) {
+    componentDidMount() { }
+    loading() {
         this.setState((state) => ({ loading: !state.loading }))
     }
     axios(method, url, data) {
@@ -47,12 +44,11 @@ class Server extends Component {
 
             axios.interceptors.request.use(config => {
                 // 加载按钮在此显示
-                this.setState(() => {
-                    return {
-                        loading: true
-                    }
-                })
-                console.log(3)
+                // this.setState(() => {
+                //     return {
+                //         loading: true
+                //     }
+                // })
                 return config
             }, error => {
                 return Promise.reject(error)
@@ -61,14 +57,12 @@ class Server extends Component {
             axios.interceptors.response.use(
                 response => {
                     // 加载按钮在此消失
-                    console.dir(response)
                     if (response.data != null) {
                         resolve(typeof response.data === 'object' ? response.data : JSON.parse(response.data))
                     }
                     return response
                 },
                 error => {
-                    console.dir(error)
                     // 加载按钮在此消失
                     if (error.code === 'ECONNABORTED' || error.message === 'Network Error' || error.message.includes('timeout')) {
                         message.error('网络错误');
@@ -86,7 +80,7 @@ class Server extends Component {
         return (
             <div>
                 <Spin spinning={this.state.loading}>{this.props.children}</Spin>
-                <h1 onClick={this.aaa.bind(this, 'wxa')}>nmsl</h1>
+                <h1 onClick={this.loading.bind(this)}>Loading...</h1>
             </div>
         )
     }

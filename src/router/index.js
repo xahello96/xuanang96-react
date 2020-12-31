@@ -23,30 +23,6 @@ const fakeAuth = {
     }
 };
 
-// class PrivateRoute extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//         }
-//     }
-//     static contextType = AuthContext;
-//     render() {
-//         return (
-//             <div>
-//                 <h4>{this.context.user ? this.context.user : '未登录'}</h4>
-//                 <AuthContext.Consumer>
-//                     {({ signin, signout }) => {
-//                         return (<div>
-//                             <button onClick={() => { signin(() => { }) }}>登陆</button>
-//                             <button onClick={signout.bind(this, () => { })}>取消登陆</button>
-//                         </div>)
-//                     }}
-//                 </AuthContext.Consumer>
-//             </div>
-//         )
-//     }
-// }
-
 class RouteConfig extends Component {
     constructor(props) {
         super(props);
@@ -78,7 +54,6 @@ class RouteConfig extends Component {
         this.getEnterpriseUuid()
     }
     getEnterpriseUuid = async () => {
-        console.log(2)
         const enterpriseUuid = await API.getEnterpriseUuid();
         this.setState({ enterpriseUuid })
     }
@@ -88,11 +63,10 @@ class RouteConfig extends Component {
                 <Server>
                     <HashRouter>
                         <Switch>
-                            <Redirect exact from='/' to='/userinfo' />
+                            <Redirect exact from='/' to='/media' />
                             <Route path="/userinfo" exact component={userinfo} />
                             <Route path="/media" exact component={media} />
                             <Route path="/example" exact component={example} />
-                            {/* <PrivateRoute path="/test"></PrivateRoute> */}
                             <Route component={error} />
                         </Switch>
                     </HashRouter>
